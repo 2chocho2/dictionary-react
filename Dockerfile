@@ -2,10 +2,10 @@ FROM    node  AS builder
 RUN     mkdir /my-app
 WORKDIR /my-app
 COPY    . .
-# ARG     REST_API_SERVER_IP
-# ARG     REST_API_SERVER_PORT
-RUN     echo REACT_APP_REST_API_SERVER_IP=192.168.0.37 > .env
-RUN     echo REACT_APP_REST_API_SERVER_PORT=8888 >> .env
+ARG     REST_API_SERVER_IP
+ARG     REST_API_SERVER_IP
+RUN     echo REACT_APP_REST_API_SERVER_IP=REST_API_SERVER_IP > .env
+RUN     echo REACT_APP_REST_API_SERVER_PORT=REST_API_SERVER_IP >> .env
 RUN     npm install
 RUN     npm run build
 
