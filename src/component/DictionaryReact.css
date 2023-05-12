@@ -131,7 +131,7 @@
 .result {
     font-family: 'Pretendard-Regular';
     font-size: 15pt;
-    background-image: url('\note2.png');
+    background-image: url('\note.png');
     line-height: 1.55;
     float: left;
     width: 80%;
@@ -208,18 +208,17 @@
     overflow-y: scroll;
 }
 
-/* 스크롤바의 폭 너비 */
 .word_list::-webkit-scrollbar {
     width: 10px;  
 }
 
 .word_list::-webkit-scrollbar-thumb {
-    background: #1E3564; /* 스크롤바 색상 */
-    border-radius: 10px; /* 스크롤바 둥근 테두리 */
+    background: #1E3564;
+    border-radius: 10px;
 }
 
 .word_list::-webkit-scrollbar-track {
-    background: #FBCEB1;  /*스크롤바 뒷 배경 색상*/
+    background: #FBCEB1;
 }
 
 .color {
@@ -270,3 +269,52 @@
     font-size: 20pt;
 }
 
+.alert {
+    opacity: 0.9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 110px;
+    background-color: #F5F5DC;
+    border: 5px solid #1E3564;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    font-family: 'Pretendard-Regular';
+    font-size: 16px;
+    font-weight: bold;
+    color: #1E3564;
+  }
+
+  .alert-content {
+    margin-bottom: 8px;
+  }
+  
+  .close-btn {
+    padding: 7px 15px;
+    margin-top: 5px;
+    background-color: #1E3564;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Pretendard-Regular';
+    font-size: 13px;
+  }
+  
+  .close-btn:hover {
+    background-color: #609AF0;
+  }
+  
+  .close-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px #333333;
+  }
+  
