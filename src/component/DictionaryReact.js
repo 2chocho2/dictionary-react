@@ -12,6 +12,12 @@ import img4 from "./img/word4.png";
 import img5 from "./img/word5.png";
 import img6 from "./img/word6.png";
 
+const MyWordImg = styled.div`
+  background-image: url(${props => props.backgroundImg});
+  background-size: contain;
+  background-repeat: no-repeat;
+  `;
+
 function DictionaryReact1() {
 
   const [dictionary, setDictionary] = useState([]);
@@ -30,11 +36,7 @@ function DictionaryReact1() {
     return { ...word, backgroundImg };
   });
 
-  const MyWordImg = styled.div`
-  background-image: url(${props => props.backgroundImg});
-  background-size: contain;
-  background-repeat: no-repeat;
-  `;
+  
 
   // 단어장 목록
   const updateLocalStorageAndState = (newWordList) => {
@@ -107,8 +109,10 @@ function DictionaryReact1() {
 
   const fetchData = async (keyword) => {
     try {
-      const response = await axios.get(`http://${process.env.REACT_APP_REST_API_SERVER_IP}:${process.env.REACT_APP_REST_API_SERVER_PORT}/api/dictionary/${keyword}`);
-      setDictionary(response.data.items);
+      if (keyword != '') {
+        const response = await axios.get(`http://${process.env.REACT_APP_REST_API_SERVER_IP}:${process.env.REACT_APP_REST_API_SERVER_PORT}/api/dictionary/${keyword}`);
+        setDictionary(response.data.items);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -192,7 +196,7 @@ function DictionaryReact1() {
               <div className='my-word_list-box'>
                 {
                   wordList.map((word, index) => {
-                    const backgroundImg = wordImgArr[index % wordImgArr.length];
+                    let backgroundImg = wordImgArr[index % wordImgArr.length];
                     return (
                       <div className="my-words" key={word.link}>
                         <div className="my-word-contents">
